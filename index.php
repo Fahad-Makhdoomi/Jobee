@@ -1,7 +1,7 @@
 <?php
 require 'conection.php';
 
-$sql = "SELECT  JobTitle, JobDescreption FROM jobposts";
+$sql = "SELECT  * FROM products";
 
 $result = mysqli_query($conn, $sql);
 
@@ -32,7 +32,7 @@ $result = mysqli_query($conn, $sql);
 <body>
     <?php include 'header.php'; ?>
 
-    <h2 style="text-align:center" class="my-3">Welcome to job finder</h2>
+    <h2 style="text-align:center" class="my-3">Welcome to <span class="text-primary"><b>Jobee</b></span></h2>
     <hr>
     <h3 class="text-primary text-center ">Recent Posts</h3>
     <div class="container d-flex flex-wrap justify-content-center bg-dark">
@@ -45,11 +45,11 @@ $result = mysqli_query($conn, $sql);
             echo '
     
      <div class="card my-5 mx-5" style="width: 20%;">
-     <img src="https://source.unsplash.com/random/?work" class="card-img-top" alt="...">
+     <img src='.$row["productImage"].' class="card-img-top" alt="...">
      <div class="card-body">
-       <h5 class="card-title">' . stripcslashes($row["JobTitle"]) . '</h5>
-       <p class="card-text">' . stripcslashes($row["JobDescreption"]) . '</p>
-       <a href="#" class="btn btn-primary">See Details</a>
+       <h5 class="card-title">' . stripcslashes($row["productName"]) . '</h5>
+       <p class="card-text">' . stripcslashes($row["productDescription"]) . '</p>
+       <a href="#" class="btn btn-primary">Price:'.stripcslashes($row["productPrice"]) .'/INR</a>
     </div>
     </div>';
         } ?>
